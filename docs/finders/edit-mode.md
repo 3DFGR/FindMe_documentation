@@ -1,47 +1,40 @@
 # Edit Mode Finders
 
-Edit-mode finders run while you are in **Edit Mode** on a mesh. Instead of selecting
-whole objects, they select the matching **components** — vertices, edges, or faces —
-of the active mesh, so you can jump straight to the geometry that needs attention.
+Edit-mode finders run while you are in **Edit Mode** on a mesh. They select the
+matching **components** — vertices, edges, or faces — of the active mesh instead of
+whole objects. A ⚙ marks finders with tunable [settings](../settings.md); several
+are shared with their Object Mode counterparts.
 
-A ⚙ marks finders that expose tunable [settings](../settings.md). Several settings
-are shared with their Object Mode counterparts, so changing a threshold in one place
-affects both.
+N-gons
+: Selects faces with more than 4 vertices.
 
-## N-gons
-Selects faces with more than 4 vertices.
+Non-Manifold
+: Selects vertices that are not manifold.
 
-## Non-Manifold
-Selects vertices that are not manifold.
+Close Vertices ⚙
+: Selects vertices that are too close to each other.
+: *Distance threshold* — vertices closer than this distance are considered close.
 
-## Close Vertices ⚙
-Selects vertices that are too close to each other.
+Degenerate Vertex ⚙
+: Selects degenerate vertices (corners with extremely small angles).
+: *Angle threshold (degrees)* — corners sharper than this are flagged.
 
-- **Distance threshold** — vertices closer than this distance are considered close.
+Twisted Face ⚙
+: Selects faces that are not flat (twisted/distorted).
+: *Angle threshold (radians)* — faces twisted beyond this are flagged.
 
-## Degenerate Vertex ⚙
-Selects degenerate vertices (corners with extremely small angles).
+Rat Nest ⚙
+: Selects vertices with too many connected edges.
+: *Max connected edges* — flag vertices exceeding this count.
 
-- **Angle threshold (degrees)** — corners sharper than this are flagged.
+Sharp Ends
+: Selects vertices that are sharp ends.
 
-## Twisted Face ⚙
-Selects faces that are not flat (twisted/distorted).
+Degenerate UVs
+: Selects faces with degenerate UV edges or near-zero UV angles.
 
-- **Angle threshold (radians)** — faces twisted beyond this are flagged.
+Multicolor UVs
+: Selects faces that have varied vertex colors across shared UVs.
 
-## Rat Nest ⚙
-Selects vertices with too many connected edges.
-
-- **Max connected edges** — flag vertices exceeding this edge count.
-
-## Sharp Ends
-Selects vertices that are sharp ends.
-
-## Degenerate UVs
-Selects faces with degenerate UV edges or near-zero UV angles.
-
-## Multicolor UVs
-Selects faces that have varied vertex colors across shared UVs.
-
-## Gradient VC
-Selects faces with a gradient in their vertex colors.
+Gradient VC
+: Selects faces with a gradient in their vertex colors.
