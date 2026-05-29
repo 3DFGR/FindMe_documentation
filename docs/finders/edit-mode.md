@@ -5,36 +5,42 @@ matching **components** — vertices, edges, or faces — of the active mesh ins
 whole objects. A ⚙ marks finders with tunable [settings](../settings.md); several
 are shared with their Object Mode counterparts.
 
-N-gons
-: Selects faces with more than 4 vertices.
+## Finders
 
-Non-Manifold
-: Selects vertices that are not manifold.
+### N-gons
+Selects faces with more than 4 vertices.
 
-Close Vertices ⚙
-: Selects vertices that are too close to each other.
-: *Distance threshold* — vertices closer than this distance are considered close.
+### Non-Manifold
+Selects vertices that are not manifold.
 
-Degenerate Vertex ⚙
-: Selects degenerate vertices (corners with extremely small angles).
-: *Angle threshold (degrees)* — corners sharper than this are flagged.
+### Close Vertices ⚙
+Selects vertices that are too close to each other.
 
-Twisted Face ⚙
-: Selects faces that are not flat (twisted/distorted).
-: *Angle threshold (radians)* — faces twisted beyond this are flagged.
+- *Distance threshold* — vertices closer than this distance are considered close.
 
-Rat Nest ⚙
-: Selects vertices with too many connected edges.
-: *Max connected edges* — flag vertices exceeding this count.
+### Degenerate Vertex ⚙
+Selects degenerate vertices (corners with extremely small angles).
 
-Sharp Ends
-: Selects vertices that are sharp ends.
+- *Angle threshold (degrees)* — corners sharper than this are flagged.
 
-Degenerate UVs
-: Selects faces with degenerate UV edges or near-zero UV angles.
+### Twisted Face ⚙
+Selects faces that are not flat (twisted/distorted).
 
-Multicolor UVs
-: Selects faces that have varied vertex colors across shared UVs.
+- *Angle threshold (radians)* — faces twisted beyond this are flagged.
 
-Gradient VC
-: Selects faces with a gradient in their vertex colors.
+### Rat Nest ⚙
+Selects vertices with too many connected edges.
+
+- *Max connected edges* — flag vertices exceeding this count.
+
+### Sharp Ends
+Selects vertices that are sharp ends.
+
+### Degenerate UVs
+Selects faces with degenerate UV edges or near-zero UV angles.
+
+### Multicolor UVs
+Selects faces that have varied vertex colors across shared UVs.
+
+### Gradient VC
+Selects faces with a gradient in their vertex colors.
