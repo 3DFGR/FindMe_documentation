@@ -1,0 +1,34 @@
+/* Finder reference styling --------------------------------------------------
+   The finder pages use Markdown definition lists (term + description). These
+   rules turn each finder into a clear, accented block that's easy to scan.
+   Scoped to plain definition lists so Python field-lists/footnotes are left
+   alone. */
+
+article dl:not(.field-list):not(.footnote):not(.glossary) > dt {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-brand-content);
+  margin-top: 1.1rem;
+  padding: 0.3rem 0.6rem;
+  border-left: 3px solid var(--color-brand-primary);
+  background: var(--color-background-secondary);
+  border-radius: 0 4px 4px 0;
+}
+
+article dl:not(.field-list):not(.footnote):not(.glossary) > dd {
+  margin-left: 0.6rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+
+/* Setting lines (rendered as extra <dd> paragraphs) read as muted sub-notes. */
+article dl:not(.field-list):not(.footnote):not(.glossary) > dd em:first-child {
+  color: var(--color-brand-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* A touch more air between consecutive finders. */
+article dl:not(.field-list):not(.footnote):not(.glossary) > dd + dt {
+  margin-top: 1.4rem;
+}
