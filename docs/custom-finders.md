@@ -1,31 +1,28 @@
 # Writing Custom Finders
 
-FindMe is designed to be extended. A finder is just a small Python class in a single
-file, and the add-on auto-discovers it on load. This page explains how the system
-works and how to add your own.
+A finder is a small Python class in a single file. FindMe auto-discovers it on load.
 
 ```{note}
-Custom finders are added by placing a `.py` file inside the add-on's
-`object_mode/` or `edit_mode/` folder. This requires access to the add-on files.
+Adding a finder means placing a `.py` file in the add-on's `object_mode/` or
+`edit_mode/` folder, so you need access to the add-on files.
 ```
 
 ## How finders are discovered
 
-On registration, FindMe scans the `object_mode/` and `edit_mode/` directories and
-imports every `.py` file that:
+On registration, FindMe scans `object_mode/` and `edit_mode/` and imports every
+`.py` file that:
 
-- does **not** start with `_` (so `_template.py` is ignored), and
-- defines a class subclassing the appropriate base (`ObjectFinder` or the edit-mode
-  base) that implements a `find()` method.
+- does not start with `_` (so `_template.py` is skipped), and
+- defines a class subclassing the right base (`ObjectFinder` or the edit-mode base)
+  with a `find()` method.
 
-Discovered finders are sorted alphabetically by label and a button is generated for
-each. There is no manual registration list to maintain — drop in a file and it
-appears.
+Finders are sorted alphabetically by label, and a button is generated for each.
+There's no registration list to maintain — drop in a file and it appears.
 
 ## Anatomy of an Object Mode finder
 
-Every object finder inherits from `ObjectFinder` and sets a few metadata fields plus
-a `find()` classmethod:
+An object finder inherits from `ObjectFinder` and sets a few metadata fields plus a
+`find()` classmethod:
 
 ```python
 from . import ObjectFinder
@@ -63,13 +60,13 @@ class NGON(ObjectFinder):
 
 ### The `find()` method
 
-`find(cls, objects, context)` must return a **list of `bpy.types.Object`**. FindMe
-selects exactly the objects you return. Be defensive — `objects` may contain
-non-mesh types, so guard with `obj.type == "MESH"` where relevant.
+`find(cls, objects, context)` must return a **list of `bpy.types.Object`**; FindMe
+selects exactly those. `objects` may contain non-mesh types, so guard with
+`obj.type == "MESH"` where relevant.
 
 ## Helper methods
 
-`ObjectFinder` provides helpers you should prefer over raw `bpy` access:
+`ObjectFinder` provides helpers; prefer them over raw `bpy` access:
 
 - **`cls.get_mesh(obj, context)`** — returns the object's mesh data, respecting the
   **Mesh Source** setting (raw object data vs. evaluated-after-modifiers).
@@ -80,9 +77,8 @@ non-mesh types, so guard with `obj.type == "MESH"` where relevant.
 
 ## Adding tunable settings
 
-Expose user-adjustable parameters with a class-level `scene_properties` dict. Each
-entry becomes a property on `scene.findme_props` and renders in the ⚙ gear popup next
-to your finder's button:
+Expose parameters with a class-level `scene_properties` dict. Each entry becomes a
+property on `scene.findme_props` and shows up in the finder's ⚙ gear popup:
 
 ```python
 import bpy
@@ -113,28 +109,26 @@ class CLOSE_VERTS(ObjectFinder):
 ```
 
 ```{tip}
-If the **same** property name is declared by both an Object Mode and an Edit Mode
-finder (common for related pairs), only one Blender property is registered and both
-finders read the same value — handy for keeping thresholds in sync.
+If the same property name is declared by both an Object Mode and an Edit Mode finder
+(common for related pairs), only one Blender property is registered and both finders
+read the same value.
 ```
 
 ## Edit Mode finders
 
 Edit-mode finders follow the same pattern but operate on the active mesh and select
-**components** (vertices/edges/faces) rather than whole objects. Place them in the
+**components** (vertices/edges/faces) instead of whole objects. Place them in the
 `edit_mode/` folder.
 
 ## Starting from the template
 
-Each folder ships a fully commented `_template.py`. The fastest way to build a new
-finder is:
+Each folder ships a commented `_template.py`:
 
-1. Copy `_template.py` to a new descriptive name (e.g. `my_check.py`).
+1. Copy `_template.py` to a descriptive name (e.g. `my_check.py`).
 2. Rename the class.
 3. Fill in `label`, `description`, `icon`, `category`, `enabled_default`.
 4. Implement `find()` (and optionally `scene_properties`).
-5. Reload the add-on; your finder appears automatically.
+5. Reload the add-on; the finder appears automatically.
 
-Because each finder is self-contained, you can also paste `_template.py` into an AI
-assistant, describe your rule in plain English, and ask it to edit only the `find()`
-function.
+Each finder is self-contained, so you can also paste `_template.py` into an AI
+assistant, describe the rule, and have it write only the `find()` function.

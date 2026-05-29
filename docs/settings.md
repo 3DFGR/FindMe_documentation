@@ -2,13 +2,13 @@
 
 FindMe has three levels of configuration:
 
-1. **Panel settings** — quick options in the FindMe sidebar (`N` panel).
-2. **Per-finder settings** — thresholds opened from a finder's ⚙ gear icon.
-3. **Add-on preferences** — global enable/disable choices in Blender Preferences.
+1. **Panel settings** — in the FindMe sidebar (`N` panel).
+2. **Per-finder settings** — thresholds behind a finder's ⚙ gear icon.
+3. **Add-on preferences** — enable/disable choices in Blender Preferences.
 
 ## Panel settings
 
-Open the **Settings** sub-panel in the FindMe tab.
+In the **Settings** sub-panel of the FindMe tab.
 
 ### Object Lookup
 
@@ -40,8 +40,8 @@ object counts at each level, so you can confirm exactly what will be scanned.
 
 ## Per-finder settings
 
-Finders that have tunable parameters show a **gear icon (⚙)** next to their button.
-Click it to open a popup with that finder's options. Typical parameters include:
+Finders with parameters show a **gear icon (⚙)** next to their button. Click it for
+a popup of that finder's options. Common parameters:
 
 - **Distance thresholds** (e.g. Close Vertices)
 - **Angle thresholds** in degrees or radians (e.g. Degenerate Vertex, Twisted Face)
@@ -50,27 +50,24 @@ Click it to open a popup with that finder's options. Typical parameters include:
 - **Type selectors** (e.g. By Modifier, By GN Tree)
 
 ```{note}
-Some thresholds are **shared** between an Object Mode finder and its Edit Mode
-counterpart. Changing the value in one place updates both, and counts re-scan
-automatically.
+Some thresholds are shared between an Object Mode finder and its Edit Mode
+counterpart. Changing one updates both.
 ```
 
 ## Ignored objects (bypass word)
 
-The **Ignored** summary button and its gear let you configure a **bypass word**.
-Any object whose name contains this word (case sensitive) is skipped by the finders
-and counted separately under **Ignored**. The default bypass word is `IGNORE`.
+The **Ignored** summary button and its gear configure a **bypass word**. Any object
+whose name contains this word (case sensitive) is skipped by the finders and counted
+separately under **Ignored**. Default: `IGNORE`.
 
-Use this to deliberately exclude reference, scaffold, or work-in-progress objects
-from scans without deleting or hiding them.
+Use it to exclude reference or work-in-progress objects without deleting or hiding
+them.
 
 ## Enabling and disabling finders
 
-You can hide finders you don't use:
-
 - **From the panel** — disabled finders collect under the **Disabled Finders**
   sub-panel, where each can be toggled back on.
-- **From preferences** — open **Edit ▸ Preferences ▸ Add-ons**, expand **FindMe**,
-  and tick/untick finders under **Show Buttons** for both Object Mode and Edit Mode.
+- **From preferences** — **Edit ▸ Preferences ▸ Add-ons**, expand **FindMe**, then
+  tick/untick finders under **Show Buttons** for Object Mode and Edit Mode.
 
-The Object Lookup mode can also be set from the preferences screen.
+Object Lookup can also be set from the preferences screen.
